@@ -1,5 +1,7 @@
 const urlApi = 'https://api-filmes.ctdscleoracy.click/';
 
+//cria funcao para fazer upload da imagem
+
 async function uploadImagem(file) {
     const formData = new FormData();
     formData.append('file', file);
@@ -23,6 +25,19 @@ async function uploadImagem(file) {
 document.getElementById("formFilme").addEventListener("submit", async function (e) {
     e.preventDefault();
 
+
+    let capaCaminho = "";
+    
+    const file = document.getElementById("formFile").files[0];
+    if(file){
+        try{
+            capaCaminho = await uploadImagem(file);
+         } catch (error) {
+            alert("Erro ao fazer upload da imagem:" + error.message);
+            return;
+         }
+    }
+
     const filme = {
         nome: document.getElementById("nome").value,
         duracao: parseInt(document.getElementById("duracao").value),
@@ -31,12 +46,10 @@ document.getElementById("formFilme").addEventListener("submit", async function (
         diretor: document.getElementById("diretor").value,
         linkDoTrailler: document.getElementById("linkDoTrailler").value,
         categoria: document.getElementById("categoria").value,
-        capaDoFilme: document.getElementById("formFile").files[0]
-            ? document.getElementById("formFile").files[0].name
-            : "Sem imagem",
+        capaDoFilme: capaCaminho,
         elenco: document.getElementById("elenco").value,
-        sinopse: document.getElementById("sinopse").value,
-
+        sinopse: document.getElementById("sinopse").value
+        
 
     };
 
