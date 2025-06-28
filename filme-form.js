@@ -40,10 +40,10 @@ document.getElementById("formFilme").addEventListener("submit", async function (
     const filme = {
         nome: document.getElementById("nome").value,
         duracao: parseInt(document.getElementById("duracao").value),
-        dataDeLancamento: document.getElementById("dataDeLancamento").value,
-        classificacaoIndicativa: document.getElementById("classificacaoIndicativa").value,
+        dataLancamento: document.getElementById("dataDeLancamento").value,
+        classificacao: document.getElementById("classificacaoIndicativa").value,
         diretor: document.getElementById("diretor").value,
-        linkTrailler: document.getElementById("linkDoTrailler").value,
+        linkTrailer: document.getElementById("linkTrailer").value,
         categoria: document.getElementById("categoria").value,
         capa_do_filme: capaCaminho,
         elenco: document.getElementById("elenco").value,
